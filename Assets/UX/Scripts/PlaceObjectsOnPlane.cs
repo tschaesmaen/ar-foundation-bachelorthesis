@@ -94,7 +94,10 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                     {
                         if (m_CanReposition)
                         {
-                            spawnedObject.transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                            /// Test-Area to Move to Object/Avatar to the point instead of just reposition it
+
+                            spawnedObject.GetComponent<AvatarMovementTouch>().StartMove(hitPose.position);
+
                         }
                     }
                     
