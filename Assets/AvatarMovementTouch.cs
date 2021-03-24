@@ -8,19 +8,17 @@ public class AvatarMovementTouch : MonoBehaviour
 
     public Transform startMarker;
     public Vector3 endMarker;
-    public float speed = 1.0f;
+    public float speed = 0.8f;
 
     private float startTime;
     private float journeyLength;
 
-    // Start is called before the first frame update
     void Start()
     {
         aRAvatar = GameObject.FindGameObjectWithTag("Avatar");
         journeyLength = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(journeyLength>0)
@@ -28,9 +26,19 @@ public class AvatarMovementTouch : MonoBehaviour
             float distance = (Time.time - startTime) * speed;
             float fracJourney = distance / journeyLength;
             transform.position = Vector3.Lerp(startMarker.position, endMarker, fracJourney);
+
+            // Rotating at the begin of the Movement
+            if (fracJourney<0.1)
+            {
+                var lookPos = endMarker - transform.position;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 20f);
+            }
         }
     }
 
+    // Method is called in PlaceObjectsOnPlane.cs
     public void StartMove(Vector3 endPos)
     {
         startMarker = this.transform;
