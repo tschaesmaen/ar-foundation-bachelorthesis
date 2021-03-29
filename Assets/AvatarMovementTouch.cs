@@ -13,10 +13,13 @@ public class AvatarMovementTouch : MonoBehaviour
     private float startTime;
     private float journeyLength;
 
+    private Animator anim;
+
     void Start()
     {
         aRAvatar = GameObject.FindGameObjectWithTag("Avatar");
         journeyLength = 0;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,11 +39,17 @@ public class AvatarMovementTouch : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 20f);
             }
         }
+
+        if(Vector3.Distance(startMarker.position, endMarker)<0.1)
+        {
+            anim.SetBool("IsRunning", false);
+        }
     }
 
     // Method is called in PlaceObjectsOnPlane.cs
     public void StartMove(Vector3 endPos)
     {
+        anim.SetBool("IsRunning", true);
         startMarker = this.transform;
         endMarker = endPos;
         startTime = Time.time;
