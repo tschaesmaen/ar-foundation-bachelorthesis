@@ -18,7 +18,27 @@ ModelImporter:
   - first:
       74: 316257097845369038
     second: Pikachu Jump
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 025-pikachu
+    second: {fileID: 2100000, guid: 7985eff767fe8794483378a8f59b52a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 025-pikachu-boca
+    second: {fileID: 2100000, guid: 35ebbbf9a0d9ce74990633cebf697c45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 025-pikachu-bochecas
+    second: {fileID: 2100000, guid: beb12c810bf18874aaa0176b29c336b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 025-pikachu-olhos
+    second: {fileID: 2100000, guid: 772605da96ff5954aa9f8569d7369922, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -50,8 +70,8 @@ ModelImporter:
       name: Pikachu StartPose
       takeName: Pikachu|Animations
       internalID: 0
-      firstFrame: 260
-      lastFrame: 260
+      firstFrame: 250
+      lastFrame: 251
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
