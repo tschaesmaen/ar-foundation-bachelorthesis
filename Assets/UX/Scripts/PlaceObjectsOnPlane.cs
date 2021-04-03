@@ -11,7 +11,6 @@ public class PlaceObjectsOnPlane : MonoBehaviour
     [SerializeField]
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject m_PlacedPrefab;
-    public GameObject joystickCanvas;
 
     /// <summary>
     /// The prefab to instantiate on touch.
@@ -53,7 +52,6 @@ public class PlaceObjectsOnPlane : MonoBehaviour
     void Awake()
     {
         m_RaycastManager = GetComponent<ARRaycastManager>();
-        joystickCanvas.SetActive(false);
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -88,7 +86,6 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                         spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                         
                         m_NumberOfPlacedObjects++;
-                        joystickCanvas.SetActive(true);
                     }
                     else
                     {
