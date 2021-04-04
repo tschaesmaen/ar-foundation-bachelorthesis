@@ -23,8 +23,14 @@ public class LightEstimation : MonoBehaviour
     [SerializeField]
     private Text tempValue;
 
+    //FPS Count for Debug UI
     [SerializeField]
     private Text fpsCount;
+
+    [SerializeField]
+    private float _hudRefreshRate = 1f;
+
+    private float _timer;
 
     /// <summary>
     /// Get or set the <c>ARCameraManager</c>.
@@ -90,6 +96,16 @@ public class LightEstimation : MonoBehaviour
         m_Light = GetComponent<Light>();
     }
 
+    private void Update()
+    {
+        if (Time.unscaledTime > _timer)
+        {
+            int fps = (int)(1f / Time.unscaledDeltaTime);
+            fpsCount.text = "FPS: " + fps;
+            _timer = Time.unscaledTime + _hudRefreshRate;
+        }
+    }
+
     void OnEnable()
     {
         if (m_CameraManager != null)
@@ -114,11 +130,13 @@ public class LightEstimation : MonoBehaviour
         if(args.lightEstimation.averageBrightness.HasValue)
         {
             brightnessValue.text = $"Brightness: {args.lightEstimation.averageBrightness.Value}";
+            m_Light.intensity = args.lightEstimation.averageBrightness.Value;
         }
 
         if (args.lightEstimation.averageColorTemperature.HasValue)
         {
             tempValue.text = $"Temp: {args.lightEstimation.averageColorTemperature.Value}";
+            m_Light.colorTemperature = args.lightEstimation.averageColorTemperature.Value;
         }
     }
 
@@ -127,14 +145,12 @@ public class LightEstimation : MonoBehaviour
         if (args.lightEstimation.averageBrightness.HasValue)
         {
             brightness = args.lightEstimation.averageBrightness.Value;
-            brightnessValue.text = $"Brightness: {args.lightEstimation.averageBrightness.Value}";
             m_Light.intensity = brightness.Value * m_BrightnessMod;
         }
 
         if (args.lightEstimation.averageColorTemperature.HasValue)
         {
             colorTemperature = args.lightEstimation.averageColorTemperature.Value;
-            tempValue.text = $"Temp: {args.lightEstimation.averageColorTemperature.Value}";
             m_Light.colorTemperature = colorTemperature.Value;
         }
         

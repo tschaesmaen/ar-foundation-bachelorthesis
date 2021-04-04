@@ -92,9 +92,7 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                         if (m_CanReposition)
                         {
                             /// Test-Area to Move to Object/Avatar to the point instead of just reposition it
-
                             spawnedObject.GetComponent<AvatarMovementTouch>().StartMove(hitPose.position);
-
                         }
                     }
                     
@@ -117,6 +115,5 @@ public class PlaceObjectsOnPlane : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
-
     }
 }
