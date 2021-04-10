@@ -5,12 +5,18 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
+using TMPro;
 
 [RequireComponent(typeof(ARPlaneManager))]
 [RequireComponent(typeof(ARPointCloudManager))]
 [RequireComponent(typeof(AROcclusionManager))]
 public class UIButtons : MonoBehaviour
 {
+
+    [SerializeField]
+    private Button qualityButton;
+
+    private TextMeshProUGUI qualityButtonText;
 
     // BUTTON PLANE && FEATURE POINTS ENABLE/DISABLE
 
@@ -19,8 +25,9 @@ public class UIButtons : MonoBehaviour
         //planeManager = GetComponent<ARPlaneManager>();
         m_ARPlaneManager = GetComponent<ARPlaneManager>();
         m_PointCloudManager = GetComponent<ARPointCloudManager>();
-    }
 
+        qualityButtonText = qualityButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     /// <summary>
     /// Toggles plane detection and the visualization of the planes.
