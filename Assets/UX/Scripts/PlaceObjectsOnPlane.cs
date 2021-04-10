@@ -31,8 +31,10 @@ public class PlaceObjectsOnPlane : MonoBehaviour
     /// </summary>
     public static event Action onPlacedObject;
 
-    ARRaycastManager m_RaycastManager;
+    public bool IsSelected { get; set; }
 
+    ARRaycastManager m_RaycastManager;
+   
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
     
     [SerializeField]
@@ -91,7 +93,7 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                     {
                         if (m_CanReposition)
                         {
-                            /// Test-Area to Move to Object/Avatar to the point instead of just reposition it
+                            ///TEST to Move to Object/Avatar to the point instead of just reposition it
                             spawnedObject.GetComponent<AvatarMovementTouch>().StartMove(hitPose.position);
                         }
                     }

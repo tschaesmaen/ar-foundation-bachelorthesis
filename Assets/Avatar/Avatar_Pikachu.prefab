@@ -288,9 +288,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3175198801944211861}
   - component: {fileID: 3652853616236247982}
+  - component: {fileID: 5704618682041000003}
   m_Layer: 0
   m_Name: BodyB_OptMesh_2_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,6 +398,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.06103866, y: 0.3157141, z: 0.1409066}
     m_Extent: {x: 0.109819576, y: 0.059740335, z: 0.08161834}
   m_DirtyAABB: 0
+--- !u!64 &5704618682041000003
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049515461193997222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1550498521909494860
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,9 +517,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2254013444966777797}
   - component: {fileID: 3274009225524751856}
+  - component: {fileID: 9073552368894134314}
   m_Layer: 0
   m_Name: BodyA_OptMesh_0_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -611,6 +627,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.060149126, y: 0.24080727, z: 0.060552567}
     m_Extent: {x: 0.20385593, y: 0.26860324, z: 0.21649}
   m_DirtyAABB: 0
+--- !u!64 &9073552368894134314
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186437293499147256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2417944431690613252
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +748,7 @@ GameObject:
   - component: {fileID: 2538230963636325191}
   m_Layer: 0
   m_Name: Pikachu_Idle
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -937,9 +967,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7985728350317970565}
   - component: {fileID: 8096832809070851816}
+  - component: {fileID: 495187914596920259}
   m_Layer: 0
   m_Name: BodyA_OptMesh_1_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,6 +1077,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.04820836, y: 0.34414604, z: 0.119440585}
     m_Extent: {x: 0.15698129, y: 0.19109258, z: 0.1412315}
   m_DirtyAABB: 0
+--- !u!64 &495187914596920259
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164917423427227221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4205976361913983068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,9 +1224,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8200884000501843173}
   - component: {fileID: 2313583575864927070}
+  - component: {fileID: 1199649664751607784}
   m_Layer: 0
   m_Name: LEye_OptMesh_3_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1288,6 +1334,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.063426375, y: 0.35492194, z: 0.18315959}
     m_Extent: {x: 0.08291942, y: 0.044896662, z: 0.060455978}
   m_DirtyAABB: 0
+--- !u!64 &1199649664751607784
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018381389888401614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5024807541576985946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,9 +1708,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7983883969245874645}
   - component: {fileID: 8707038104877552295}
+  - component: {fileID: 3166305616516024947}
   m_Layer: 0
   m_Name: Mouth_OptMesh_5_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1757,6 +1818,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.054843754, y: 0.29597282, z: 0.1795881}
     m_Extent: {x: 0.06423268, y: 0.046381682, z: 0.053166673}
   m_DirtyAABB: 0
+--- !u!64 &3166305616516024947
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307351509992772689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6420349811314958324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,9 +1873,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6225528609793922352}
   - component: {fileID: 6783137018214822879}
+  - component: {fileID: 6999811275986672112}
   m_Layer: 0
   m_Name: BodyAVco_OptMesh_6_0_node
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1907,6 +1983,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.1649955, y: 0.19563165, z: -0.22462389}
     m_Extent: {x: 0.18073694, y: 0.1990673, z: 0.15295371}
   m_DirtyAABB: 0
+--- !u!64 &6999811275986672112
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430312665670451613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6477246877712272993
 GameObject:
   m_ObjectHideFlags: 0

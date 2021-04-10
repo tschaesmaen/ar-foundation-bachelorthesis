@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ARPlaneManager))]
 [RequireComponent(typeof(ARPointCloudManager))]
-[RequireComponent(typeof(AROcclusionManager))]
 public class UIButtons : MonoBehaviour
 {
 
