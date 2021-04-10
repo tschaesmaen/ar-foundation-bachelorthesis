@@ -6,7 +6,6 @@ TagManager:
   tags:
   - baseSDK
   - Avatar
-  - DebugUIPosition
   layers:
   - Default
   - TransparentFX

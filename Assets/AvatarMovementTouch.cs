@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AvatarMovementTouch : MonoBehaviour
 {
+    GameObject aRAvatar;
+
     public Transform startMarker;
     public Vector3 endMarker;
-    public float speed = 0.5f;
+    public float speed = 0.8f;
 
     private float startTime;
     private float journeyLength;
@@ -15,6 +17,7 @@ public class AvatarMovementTouch : MonoBehaviour
 
     void Start()
     {
+        aRAvatar = GameObject.FindGameObjectWithTag("Avatar");
         journeyLength = 0;
         anim = GetComponent<Animator>();
     }
@@ -51,5 +54,6 @@ public class AvatarMovementTouch : MonoBehaviour
         endMarker = endPos;
         startTime = Time.time;
         journeyLength = Vector3.Distance(startMarker.position, endMarker);
+        Debug.Log("journeyLength is " + journeyLength);
     }
 }
