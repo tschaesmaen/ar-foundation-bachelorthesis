@@ -66,6 +66,18 @@ public class PlaceObjectsOnPlane : MonoBehaviour
         return false;
     }
 
+    // ADDING TO RESET BUTTON TO FIND ALL AVATARS AND DESTROY THEM
+    public void ResetPlacedObjects()
+    {
+        GameObject[] allPlacedObjects = GameObject.FindGameObjectsWithTag("Avatar");
+
+        foreach (GameObject avatar in allPlacedObjects)
+            GameObject.Destroy(avatar);
+
+        m_NumberOfPlacedObjects = 0;
+    }
+
+
     void Update()
     {
         if (!TryGetTouchPosition(out Vector2 touchPosition))
@@ -84,7 +96,6 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                     if (m_NumberOfPlacedObjects < m_MaxNumberOfObjectsToPlace)
                     {
                         spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-                        
                         m_NumberOfPlacedObjects++;
                     }
                     else

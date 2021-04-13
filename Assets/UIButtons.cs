@@ -18,8 +18,6 @@ public class UIButtons : MonoBehaviour
 
     private TextMeshProUGUI qualityButtonText;
 
-    // BUTTON PLANE && FEATURE POINTS ENABLE/DISABLE
-
     void Awake()
     {
         //planeManager = GetComponent<ARPlaneManager>();
@@ -28,6 +26,8 @@ public class UIButtons : MonoBehaviour
 
         qualityButtonText = qualityButton.GetComponentInChildren<TextMeshProUGUI>();
     }
+
+    // BUTTON PLANE && FEATURE POINTS ENABLE/DISABLE
 
     /// <summary>
     /// Toggles plane detection and the visualization of the planes.
