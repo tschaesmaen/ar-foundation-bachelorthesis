@@ -1472,8 +1472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 750, y: 359.40662}
+  m_AnchoredPosition: {x: 0, y: 75.9}
+  m_SizeDelta: {x: 750, y: 551.80396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327970426
 MonoBehaviour:
@@ -1495,8 +1495,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enable Occlusion for a more realistic placement. NOTE: Occlusion is only
-    available for phones with an depth sensor. More under https://developers.google.com/ar/discover/supported-devices'
+  m_text: 'Enable Occlusion for a more realistic placement.
+
+    NOTE: Occlusion
+    is only available for phones with an depth sensor. More information under
+
+    https://developers.google.com/ar/discover/supported-devices'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e5ed35563bc8794a88e4d3cb20a936a, type: 2}
   m_sharedMaterial: {fileID: 3213902608138898129, guid: 4e5ed35563bc8794a88e4d3cb20a936a,
@@ -2503,7 +2507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: -271}
+  m_AnchoredPosition: {x: 0.000022888, y: -293}
   m_SizeDelta: {x: 1241.6885, y: 1120.2959}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699605362
@@ -4329,7 +4333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 3984174212159926071, guid: a4d4c6411ee9f4e63877fb38d9ebe324,
+  m_PlanePrefab: {fileID: 8510837809674685635, guid: 9f6d06b82eb7f544699e2ba8bbfc59d0,
     type: 3}
   m_DetectionMode: 1
 --- !u!114 &1335839538
@@ -4899,7 +4903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: -271}
+  m_AnchoredPosition: {x: 0.000022888, y: -348}
   m_SizeDelta: {x: 1241.6885, y: 1120.2959}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796351899
@@ -5925,11 +5929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1641376889, guid: 29251f2f7c5044cce8e7eb862b4d93ef, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1641376889, guid: 29251f2f7c5044cce8e7eb862b4d93ef, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5977163236686653921, guid: 29251f2f7c5044cce8e7eb862b4d93ef,
         type: 3}
@@ -5962,6 +5966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977163236686653923, guid: 29251f2f7c5044cce8e7eb862b4d93ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -525
       objectReference: {fileID: 0}
     - target: {fileID: 5977163238016480453, guid: 29251f2f7c5044cce8e7eb862b4d93ef,
         type: 3}

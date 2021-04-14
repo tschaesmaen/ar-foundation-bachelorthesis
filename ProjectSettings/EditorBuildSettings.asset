@@ -15,7 +15,8 @@ EditorBuildSettings:
     path: Assets/Meshing/Scenes/Meshing.unity
     guid: d5ebb81bb19834855bb7ca490ab73fbf
   - enabled: 0
-    path: Assets/ManoMotion ARFoundation/Scenes/ManoMotion SDK CE ARFoundation Features.unity
+    path: Assets/_Test_ManomotionSDK/ManoMotion ARFoundation/Scenes/ManoMotion SDK
+      CE ARFoundation Features.unity
     guid: 2e8ecbb9ea2e340009ac8d7dd6fbd854
   - enabled: 0
     path: Assets/UX/Scenes/PikachuAvatarScene.unity
