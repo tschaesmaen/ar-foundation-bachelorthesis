@@ -46,58 +46,6 @@ public class ARUXAnimationManager : MonoBehaviour
     }
 
     [SerializeField]
-    [Tooltip("Find Clip animation")]
-    VideoClip m_FindImageClip;
-    
-    /// <summary>
-    /// Get the <c>Find Image Clip</c>
-    /// </summary>
-    public VideoClip findImageClip
-    {
-        get => m_FindImageClip;
-        set => m_FindImageClip = value;
-    }
-
-    [SerializeField]
-    [Tooltip("Find body animation")]
-    VideoClip m_FindBodyClip;
-    
-    /// <summary>
-    /// Get the <c>Find body Clip</c>
-    /// </summary>
-    public VideoClip findBodyClip
-    {
-        get => m_FindBodyClip;
-        set => m_FindBodyClip = value;
-    }
-
-    [SerializeField]
-    [Tooltip("Find object animation")]
-    VideoClip m_FindObjectClip;
-    
-    /// <summary>
-    /// Get the <c>Find object Clip</c>
-    /// </summary>
-    public VideoClip findObjectClip
-    {
-        get => m_FindObjectClip;
-        set => m_FindObjectClip = value;
-    }
-
-    [SerializeField]
-    [Tooltip("Find face animation")]
-    VideoClip m_FindFaceClip;
-    
-    /// <summary>
-    /// Get the <c>Find face iamge</c>
-    /// </summary>
-    public VideoClip findFaceClip
-    {
-        get => m_FindFaceClip;
-        set => m_FindFaceClip = value;
-    }
-
-    [SerializeField]
     [Tooltip("ARKit Coaching overlay reference")]
     ARKitCoachingOverlay m_CoachingOverlay;
 
@@ -152,10 +100,6 @@ public class ARUXAnimationManager : MonoBehaviour
 
     const string k_MoveDeviceText = "Move Device Slowly";
     const string k_TapToPlaceText = "Tap to Place AR";
-    const string k_FindABodyText = "Find a Body to Track";
-    const string k_FindAFaceText = "Find a Face to Track";
-    const string k_FindClipText = "Find an Image to Track";
-    const string k_FindObjectText = "Find an Object to Track";
 
     public static event Action onFadeOffComplete;
 
@@ -267,67 +211,6 @@ public class ARUXAnimationManager : MonoBehaviour
             m_InstructionText.text = k_TapToPlaceText;
         }
         
-        m_FadeOn = true;
-    }
-
-    public void ShowFindImage()
-    {
-        m_VideoPlayer.clip = m_FindImageClip;
-        m_VideoPlayer.Play();
-        if (m_LocalizeText)
-        {
-            m_InstructionText.text = m_LocalizationManager.localizedImage;
-        }
-        else
-        {
-            m_InstructionText.text = k_FindClipText;
-        }
-        m_FadeOn = true;
-    }
-
-    public void ShowFindBody()
-    {
-        m_VideoPlayer.clip = m_FindBodyClip;
-        m_VideoPlayer.Play();
-        if (m_LocalizeText)
-        {
-            m_InstructionText.text = m_LocalizationManager.localizedBody;
-        }
-        else
-        {
-            m_InstructionText.text = k_FindABodyText;
-        }    
-        m_FadeOn = true;
-        
-    }
-
-    public void ShowFindObject()
-    {
-        m_VideoPlayer.clip = m_FindObjectClip;
-        m_VideoPlayer.Play();
-        if (m_LocalizeText)
-        {
-            m_InstructionText.text = m_LocalizationManager.localizedObject;
-        }
-        else
-        {
-            m_InstructionText.text = k_FindObjectText;
-        }
-        m_FadeOn = true;
-    }
-
-    public void ShowFindFace()
-    {
-        m_VideoPlayer.clip = m_FindFaceClip;
-        m_VideoPlayer.Play();
-        if (m_LocalizeText)
-        {
-            m_InstructionText.text = m_LocalizationManager.localizedFace;
-        }
-        else
-        {
-            m_InstructionText.text = k_FindAFaceText;
-        }
         m_FadeOn = true;
     }
 

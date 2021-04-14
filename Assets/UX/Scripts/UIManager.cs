@@ -29,10 +29,6 @@ public class UIManager : MonoBehaviour
     public enum InstructionUI
     {
         CrossPlatformFindAPlane,
-        FindAFace,
-        FindABody,
-        FindAnImage,
-        FindAnObject,
         ARKitCoachingOverlay,
         TapToPlace,
         None
@@ -51,10 +47,6 @@ public class UIManager : MonoBehaviour
     {
         FoundAPlane,
         FoundMultiplePlanes,
-        FoundAFace,
-        FoundABody,
-        FoundAnImage,
-        FoundAnObject,
         PlacedAnObject,
         None
     };
@@ -129,39 +121,6 @@ public class UIManager : MonoBehaviour
     {
         get => m_PlaneManager;
         set => m_PlaneManager = value;
-    }
-
-    [SerializeField]
-    ARFaceManager m_FaceManager;
-    public ARFaceManager faceManager
-    {
-        get => m_FaceManager;
-        set => m_FaceManager = value;
-    }
-
-    [SerializeField]
-    ARHumanBodyManager m_BodyManager;
-    public ARHumanBodyManager bodyManager
-    {
-        get => m_BodyManager;
-        set => m_BodyManager = value;
-    }
-
-    [SerializeField]
-    ARTrackedImageManager m_ImageManager;
-    public ARTrackedImageManager imageManager
-    {
-        get => m_ImageManager;
-        set => m_ImageManager = value;
-    }
-
-    [SerializeField]
-    ARTrackedObjectManager m_ObjectManager;
-
-    public ARTrackedObjectManager objectManager
-    {
-        get => m_ObjectManager;
-        set => m_ObjectManager = value;
     }
 
     [SerializeField]
@@ -260,26 +219,6 @@ public class UIManager : MonoBehaviour
             {
                 m_PlaneManager = arPlaneManager;
             }
-
-            if (m_ARSessionOrigin.TryGetComponent(out ARFaceManager arFaceManager))
-            {
-                m_FaceManager = arFaceManager;
-            }
-
-            if (m_ARSessionOrigin.TryGetComponent(out ARHumanBodyManager arHumanBodyManager))
-            {
-                m_BodyManager = arHumanBodyManager;
-            }
-
-            if (m_ARSessionOrigin.TryGetComponent(out ARTrackedImageManager arTrackedImageManager))
-            {
-                m_ImageManager = arTrackedImageManager;
-            }
-
-            if (m_ARSessionOrigin.TryGetComponent(out ARTrackedObjectManager arTrackedObjectManager))
-            {
-                m_ObjectManager = arTrackedObjectManager;
-            }
         }
     }
     
@@ -292,18 +231,6 @@ public class UIManager : MonoBehaviour
 
             case InstructionGoals.FoundMultiplePlanes:
                 return MultiplePlanesFound;
-
-            case InstructionGoals.FoundABody:
-                return BodyFound;
-
-            case InstructionGoals.FoundAFace:
-                return FaceFound;
-
-            case InstructionGoals.FoundAnImage:
-                return ImageFound;
-
-            case InstructionGoals.FoundAnObject:
-                return ObjectFound;
 
             case InstructionGoals.PlacedAnObject:
                 return PlacedObject;
@@ -321,22 +248,6 @@ public class UIManager : MonoBehaviour
         {
             case InstructionUI.CrossPlatformFindAPlane:
                 m_AnimationManager.ShowCrossPlatformFindAPlane();
-                break;
-
-            case InstructionUI.FindAFace:
-                m_AnimationManager.ShowFindFace();
-                break;
-
-            case InstructionUI.FindABody:
-                m_AnimationManager.ShowFindBody();
-                break;
-
-            case InstructionUI.FindAnImage:
-                m_AnimationManager.ShowFindImage();
-                break;
-
-            case InstructionUI.FindAnObject:
-                m_AnimationManager.ShowFindObject();
                 break;
 
             case InstructionUI.ARKitCoachingOverlay:
@@ -367,14 +278,6 @@ public class UIManager : MonoBehaviour
     bool PlanesFound() => m_PlaneManager && m_PlaneManager.trackables.count > 0;
 
     bool MultiplePlanesFound() => m_PlaneManager && m_PlaneManager.trackables.count > 1;
-
-    bool FaceFound() => m_FaceManager && m_FaceManager.trackables.count > 0;
-
-    bool BodyFound() => m_BodyManager && m_BodyManager.trackables.count > 0;
-
-    bool ImageFound() => m_ImageManager && m_ImageManager.trackables.count > 0;
-
-    bool ObjectFound() => m_ObjectManager && m_ObjectManager.trackables.count > 0;
     
     void FadeComplete()
     {

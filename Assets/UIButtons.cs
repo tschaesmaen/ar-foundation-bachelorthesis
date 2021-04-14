@@ -5,57 +5,80 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
+using TMPro;
 
 [RequireComponent(typeof(ARPlaneManager))]
+[RequireComponent(typeof(ARPointCloudManager))]
 [RequireComponent(typeof(AROcclusionManager))]
 public class UIButtons : MonoBehaviour
 {
 
-    // PLANE ENABLE/DISABLE
-    private ARPlaneManager planeManager;
     [SerializeField]
-    private Text togglePlaneBtnText;
+    private Button qualityButton;
 
-    private void Awake()
+    private TextMeshProUGUI qualityButtonText;
+
+    void Awake()
     {
-        planeManager = GetComponent<ARPlaneManager>();
-        togglePlaneBtnText.text = "Hide Planes";
+        //planeManager = GetComponent<ARPlaneManager>();
+        m_ARPlaneManager = GetComponent<ARPlaneManager>();
+        m_PointCloudManager = GetComponent<ARPointCloudManager>();
+
+        qualityButtonText = qualityButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    // BUTTON PLANE ENABLE/DISABLE
+    // BUTTON PLANE && FEATURE POINTS ENABLE/DISABLE
 
-    public void TogglePlaneDetection()
+    /// <summary>
+    /// Toggles plane detection and the visualization of the planes.
+    /// </summary>
+    public void ToggleTrackedVisuals()
     {
-        planeManager.enabled = !planeManager.enabled;
-        string toggleButtonMessage = "";
+        m_ARPlaneManager.enabled = !m_ARPlaneManager.enabled;
+        m_PointCloudManager.enabled = !m_PointCloudManager.enabled;
 
-        if(planeManager.enabled)
+        // Check if PlaneManager is enabled, and show Visuals
+        if (m_ARPlaneManager.enabled)
         {
-            toggleButtonMessage = "Hide Planes";
             SetAllPlanesActive(true);
         }
         else
         {
-            toggleButtonMessage = "Show Planes";
             SetAllPlanesActive(false);
         }
 
-        togglePlaneBtnText.text = toggleButtonMessage;
+        // Check if PointCloudManager is enabled, and show Visuals
+        if (m_PointCloudManager.enabled)
+        {
+            m_PointCloudManager.SetTrackablesActive(true);
+            m_PointCloudManager.enabled = true;
+        }
+        else
+        {
+            m_PointCloudManager.SetTrackablesActive(false);
+            m_PointCloudManager.enabled = false;
+        }
+
     }
 
-    private void SetAllPlanesActive(bool value)
+    /// <summary>
+    /// Iterates over all the existing planes and activates
+    /// or deactivates their <c>GameObject</c>s'.
+    /// </summary>
+    /// <param name="value">Each planes' GameObject is SetActive with this value.</param>
+    void SetAllPlanesActive(bool value)
     {
-        foreach(var plane in planeManager.trackables)
-        {
+        foreach (var plane in m_ARPlaneManager.trackables)
             plane.gameObject.SetActive(value);
-        }
     }
+
+    ARPlaneManager m_ARPlaneManager;
+    ARPointCloudManager m_PointCloudManager;
 
     // BUTTON QUIT APPLICATION
 
     public void QuitApplication()
     {
         Application.Quit();
-        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -53,29 +54,56 @@ public class PlaceObjectsOnPlane : MonoBehaviour
         m_RaycastManager = GetComponent<ARRaycastManager>();
     }
 
+    bool TryGetTouchPosition(out Vector2 touchPosition)
+    {
+        if (Input.touchCount > 0)
+        {
+            touchPosition = Input.GetTouch(0).position;
+            return true;
+        }
+
+        touchPosition = default;
+        return false;
+    }
+
+    // ADDING TO RESET BUTTON TO FIND ALL AVATARS AND DESTROY THEM
+    public void ResetPlacedObjects()
+    {
+        GameObject[] allPlacedObjects = GameObject.FindGameObjectsWithTag("Avatar");
+
+        foreach (GameObject avatar in allPlacedObjects)
+            GameObject.Destroy(avatar);
+
+        m_NumberOfPlacedObjects = 0;
+    }
+
+
     void Update()
     {
+        if (!TryGetTouchPosition(out Vector2 touchPosition))
+            return;
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
             {
-                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+                if (!IsPointOverUIObject(touchPosition) && m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
                 {
                     Pose hitPose = s_Hits[0].pose;
 
                     if (m_NumberOfPlacedObjects < m_MaxNumberOfObjectsToPlace)
                     {
                         spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-                        
                         m_NumberOfPlacedObjects++;
                     }
                     else
                     {
                         if (m_CanReposition)
                         {
-                            spawnedObject.transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                            /// Test-Area to Move to Object/Avatar to the point instead of just reposition it
+                            spawnedObject.GetComponent<AvatarMovementTouch>().StartMove(hitPose.position);
                         }
                     }
                     
@@ -86,5 +114,17 @@ public class PlaceObjectsOnPlane : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool IsPointOverUIObject(Vector2 pos)
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return false;
+
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(pos.x, pos.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }
