@@ -12,19 +12,11 @@ using TMPro;
 [RequireComponent(typeof(AROcclusionManager))]
 public class UIButtons : MonoBehaviour
 {
-
-    [SerializeField]
-    private Button qualityButton;
-
-    private TextMeshProUGUI qualityButtonText;
-
     void Awake()
     {
         //planeManager = GetComponent<ARPlaneManager>();
         m_ARPlaneManager = GetComponent<ARPlaneManager>();
         m_PointCloudManager = GetComponent<ARPointCloudManager>();
-
-        qualityButtonText = qualityButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // BUTTON PLANE && FEATURE POINTS ENABLE/DISABLE

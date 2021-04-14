@@ -730,7 +730,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2914474585300701693}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
@@ -1549,6 +1549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4698797533643458671}
   - component: {fileID: 1203817184713626900}
+  - component: {fileID: 9183523734129413294}
   - component: {fileID: 9087648744808137815}
   m_Layer: 0
   m_Name: Avatar_Pikachu
@@ -1588,6 +1589,18 @@ MonoBehaviour:
   startMarker: {fileID: 0}
   endMarker: {x: 0, y: 0, z: 0}
   speed: 0.5
+--- !u!114 &9183523734129413294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882688011191678226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997ab9f36454a444ea6b6a94004a9584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &9087648744808137815
 Animator:
   serializedVersion: 3

@@ -95,6 +95,8 @@ public class PlaceObjectsOnPlane : MonoBehaviour
 
                     if (m_NumberOfPlacedObjects < m_MaxNumberOfObjectsToPlace)
                     {
+                        hitPose.rotation *= Quaternion.Euler(0, 180, 0); 
+
                         spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                         m_NumberOfPlacedObjects++;
                     }
