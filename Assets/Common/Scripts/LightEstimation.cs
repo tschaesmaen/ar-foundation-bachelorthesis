@@ -16,13 +16,6 @@ public class LightEstimation : MonoBehaviour
     [Tooltip("The ARCameraManager which will produce frame events containing light estimation information.")]
     ARCameraManager m_CameraManager;
 
-    //Text-Value fields for Light Estimation by Dilmer Valecillos
-    [SerializeField]
-    private Text brightnessValue;
-
-    [SerializeField]
-    private Text tempValue;
-
     //FPS Count for Debug UI
     [SerializeField]
     private Text fpsCount;
@@ -31,6 +24,8 @@ public class LightEstimation : MonoBehaviour
     private float _hudRefreshRate = 1f;
 
     private float _timer;
+
+    Light m_Light;
 
     /// <summary>
     /// Get or set the <c>ARCameraManager</c>.
@@ -110,34 +105,12 @@ public class LightEstimation : MonoBehaviour
     {
         if (m_CameraManager != null)
             m_CameraManager.frameReceived += FrameChanged;
-
-        //ValueCount for Debug Light Estimation by Dilmer Valecillos
-        m_CameraManager.frameReceived += FrameUpdated;
     }
 
     void OnDisable()
     {
         if (m_CameraManager != null)
             m_CameraManager.frameReceived -= FrameChanged;
-
-        //ValueCount for Debug Light Estimation by Dilmer Valecillos
-        m_CameraManager.frameReceived -= FrameUpdated;
-    }
-
-    //FrameUpdated Method for LightEstimation by Dilmer Valecillos
-    private void FrameUpdated(ARCameraFrameEventArgs args)
-    {
-        if(args.lightEstimation.averageBrightness.HasValue)
-        {
-            brightnessValue.text = $"Brightness: {args.lightEstimation.averageBrightness.Value}";
-            m_Light.intensity = args.lightEstimation.averageBrightness.Value;
-        }
-
-        if (args.lightEstimation.averageColorTemperature.HasValue)
-        {
-            tempValue.text = $"Temp: {args.lightEstimation.averageColorTemperature.Value}";
-            m_Light.colorTemperature = args.lightEstimation.averageColorTemperature.Value;
-        }
     }
 
     void FrameChanged(ARCameraFrameEventArgs args)
@@ -170,6 +143,19 @@ public class LightEstimation : MonoBehaviour
         {
             mainLightColor = args.lightEstimation.mainLightColor;
             m_Light.color = mainLightColor.Value;
+
+#if PLATFORM_ANDROID
+            // ARCore needs to apply energy conservation term (1 / PI) and be placed in gamma
+            m_Light.color = mainLightColor.Value / Mathf.PI;
+            m_Light.color = m_Light.color.gamma;
+
+            // ARCore returns color in HDR format (can be represented as FP16 and have values above 1.0)
+            var camera = m_CameraManager.GetComponentInParent<Camera>();
+            if (camera == null || !camera.allowHDR)
+            {
+                Debug.LogWarning($"HDR Rendering is not allowed.  Color values returned could be above the maximum representable value.");
+            }
+#endif
         }
 
         if (args.lightEstimation.mainLightIntensityLumens.HasValue)
@@ -184,7 +170,7 @@ public class LightEstimation : MonoBehaviour
             RenderSettings.ambientMode = AmbientMode.Skybox;
             RenderSettings.ambientProbe = sphericalHarmonics.Value;
         }
-    }
 
-    Light m_Light;
+
+    }
 }
